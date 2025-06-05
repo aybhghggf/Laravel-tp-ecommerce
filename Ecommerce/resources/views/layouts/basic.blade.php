@@ -8,6 +8,15 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-50">
+    @if(session('success'))
+        <div class="fixed top-20 right-4 flex items-center p-4 mb-4 rounded-lg shadow-lg bg-gradient-to-r from-green-500 to-green-600 text-white transform transition-all duration-500 ease-in-out hover:scale-105 z-40" role="alert" x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 3000)">
+            <svg class="flex-shrink-0 w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="font-medium">{{ session('success') }}</span>
+        </div>
+    @endif
+<body class="bg-gray-50">
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -47,7 +56,7 @@
                         <a href="{{ route('sign.show') }}" class="auth-btn text-gray-600 hover:text-gray-800 px-4 py-2 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
                             Sign In
                         </a>
-                        <a href="/login" class="auth-btn bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md hover:shadow-lg">
+                        <a href="{{ route('login.show') }}" class="auth-btn bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md hover:shadow-lg">
                             Login
                         </a>
                     </div>
@@ -109,6 +118,7 @@
         @yield('Perfumes')
         @yield('About')
         @yield('Register')
+        @yield('Login')
     </main>
 </body>
     <script src="{{ asset('js/script.js') }}"></script>

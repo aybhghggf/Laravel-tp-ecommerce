@@ -58,41 +58,7 @@
             }
         });
 
-        // Form submission
-        document.getElementById('signInForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const userData = {
-                nom: formData.get('nom'),
-                prenom: formData.get('prenom'),
-                email: formData.get('email'),
-                password: formData.get('password'),
-                terms: formData.get('terms')
-            };
-            
-            // Simple validation
-            if (!userData.terms) {
-                alert('Please accept the terms and conditions');
-                return;
-            }
-            
-            // Simulate form submission
-            const submitBtn = this.querySelector('button[type="submit"]');
-            const originalText = submitBtn.textContent;
-            
-            submitBtn.textContent = 'Creating Account...';
-            submitBtn.disabled = true;
-            
-            setTimeout(() => {
-                alert('Account created successfully!\nWelcome to Essence, ' + userData.nom + ' ' + userData.prenom);
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-                this.reset();
-            }, 2000);
-        });
-
+       
         // Floating label animation enhancement
         document.querySelectorAll('.input-field').forEach(input => {
             input.addEventListener('blur', function() {
