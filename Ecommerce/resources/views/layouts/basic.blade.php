@@ -15,6 +15,13 @@
             </svg>
             <span class="font-medium">{{ session('success') }}</span>
         </div>
+    @elseif(session('error'))
+        <div class="fixed top-20 right-4 flex items-center p-4 mb-4 rounded-lg shadow-lg bg-gradient-to-r from-red-500 to-red-600 text-white transform transition-all duration-500 ease-in-out hover:scale-105 z-40" role="alert" x-data="{show: true}" x-show="show" x-init="setTimeout(() => show = false, 3000)">
+            <svg class="flex-shrink-0 w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"></path>
+            </svg>
+            <span class="font-medium">{{ session('error') }}</span>
+        </div>
     @endif
 <body class="bg-gray-50">
     <!-- Navigation Bar -->
@@ -51,16 +58,22 @@
                 </div>
 
                 <!-- Desktop Auth Buttons -->
-                <div class="hidden md:block">
-                    <div class="ml-4 flex items-center space-x-4">
-                        <a href="{{ route('sign.show') }}" class="auth-btn text-gray-600 hover:text-gray-800 px-4 py-2 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
-                            Sign In
-                        </a>
-                        <a href="{{ route('login.show') }}" class="auth-btn bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md hover:shadow-lg">
-                            Login
+                @auth
+                    <div class="hidden md:block ml-10 space-x-4">
+                        <a href="" class="text-gray-600 hover:text-gray-800 px-4 py-2 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
+                            Logout
                         </a>
                     </div>
-                </div>
+                @else
+                    <div class="hidden md:block ml-10 space-x-4">
+                        <a href="{{ route('login.show') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
+                            Login
+                        </a>
+                        <a href="{{ route('sign.show') }}" class="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md">
+                            Register
+                        </a>
+                    </div>
+                @endauth
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
@@ -87,26 +100,34 @@
                 
                 <!-- Mobile Navigation Links -->
                 <div class="space-y-6">
-                    <a href="#home" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
+                    <a href="{{ route('Home.show') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
                         Home
                     </a>
-                    <a href="#perfumes" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
+                    <a href="{{ route('Perfumes.show') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
                         Perfumes
                     </a>
-                    <a href="#about" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
+                    <a href="{{ route('About') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
                         About
                     </a>
                 </div>
 
                 <!-- Mobile Auth Buttons -->
-                <div class="mt-8 space-y-4">
-                    <button class="w-full text-gray-600 hover:text-gray-800 px-4 py-3 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
-                        Sign In
-                    </button>
-                    <button class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-3 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md">
-                        Login
-                    </button>
-                </div>
+                @auth
+                    <div class="mt-8 space-y-4">
+                        <a href="" class="w-full text-gray-600 hover:text-gray-800 px-4 py-3 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
+                            Logout
+                        </a>
+                    </div>
+                @else
+                    <div class="mt-8 space-y-4">
+                        <a href="{{ route('login.show') }}" class="w-full text-gray-600 hover:text-gray-800 px-4 py-3 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
+                            Login
+                        </a>
+                        <a href="{{ route('sign.show') }}" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-3 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md">
+                            Register
+                        </a>
+                    </div>
+                @endauth
             </div>
         </div>
 

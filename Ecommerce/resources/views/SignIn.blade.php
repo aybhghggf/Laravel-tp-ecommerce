@@ -133,7 +133,7 @@
                 <div class="text-center pt-4">
                     <p class="text-gray-600 font-inter">
                         Already have an account? 
-                        <a href="#" class="text-amber-600 hover:text-amber-700 font-medium">Sign in here</a>
+                        <a href="{{ route('login.show') }}" class="text-amber-600 hover:text-amber-700 font-medium">Login in here</a>
                     </p>
                 </div>
             </form>

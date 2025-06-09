@@ -12,3 +12,4 @@ Route::get('/About',[IndexController::class,'ShowAbout'])->name('About');
 Route::get('/SignIn',[ClientController::class, 'showSignIn'])->name('sign.show');
 Route::post('/StoreClient',[ClientController::class,'Store'])->name('Store.client');
 Route::get('/Login',[ ClientController::class,'showLogin'])->name('login.show');
+Route::post('Auth',[ClientController::class,'AuthenficationUser'])->name('Auth');

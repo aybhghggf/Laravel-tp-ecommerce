@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ClientRequest;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -24,5 +25,17 @@ class ClientController extends Controller
         ];
         Client::create( $data);
         return to_route('login.show')->with('success','Client created successfully');
+    }
+    public function AuthenficationUser( Request $request){
+            $data = $request->post();
+            $creentials = [
+                'email' => $data['email'],
+                'password' => $data['password'],
+            ];
+            if(Auth::attempt($creentials)){
+                return to_route('Home.show')->with('success','Welcome');
+            }else{
+                return to_route('login.show')->with('error','Invalid Informations');
+            }
     }
 }
