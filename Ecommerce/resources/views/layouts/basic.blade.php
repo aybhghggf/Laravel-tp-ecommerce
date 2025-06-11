@@ -141,6 +141,9 @@
         @yield('Register')
         @yield('Login')
     </main>
+    <footer>
+        @yield('footer')
+    </footer>
 </body>
     <script src="{{ asset('js/script.js') }}"></script>
 </html>
