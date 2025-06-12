@@ -140,10 +140,9 @@
         @yield('About')
         @yield('Register')
         @yield('Login')
+        
     </main>
-    <footer>
-        @yield('footer')
-    </footer>
+<x-footer />
 </body>
     <script src="{{ asset('js/script.js') }}"></script>
 </html>
