@@ -19,7 +19,7 @@
                         Filter by Price
                     </h2>
                     
-                    <form class="space-y-6">
+                    <form class="space-y-6" action="" method="GET">
                         <div>
                             <label for="min_price" class="block text-sm font-medium text-gray-300 mb-2">
                                 Minimum Price ($)
@@ -54,26 +54,7 @@
                         >
                             Apply Filter
                         </button>
-                        
-                        <button 
-                            type="button" 
-                            class="w-full py-3 px-6 rounded-lg text-lg font-semibold border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors"
-                        >
-                            Clear Filter
-                        </button>
                     </form>
-                    
-                    <!-- Price Range Display -->
-                    <div class="mt-8 p-4 bg-black bg-opacity-40 rounded-lg">
-                        <h3 class="text-sm font-medium text-gray-400 mb-2">Price Range</h3>
-                        <div class="flex justify-between text-sm text-gray-300">
-                            <span>$25</span>
-                            <span>$850</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-2 mt-2">
-                            <div class="gold-gradient h-2 rounded-full" style="width: 100%"></div>
-                        </div>
-                    </div>
                 </div>
             </div>
 
