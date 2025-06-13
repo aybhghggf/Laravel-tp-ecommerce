@@ -5,7 +5,7 @@ use App\Http\Controllers\IndexController;
 
 
 Route::get('/Home',[IndexController::class,'ShowHome'])->name('Home.show');
-Route::get('/Perfumes',[IndexController::class,'ShowPerfumes'])->name('Perfumes.show');
+Route::get('/Fragrences',[IndexController::class,'ShowPerfumes'])->name('Perfumes.show');
 Route::get('/About',[IndexController::class,'ShowAbout'])->name('About');
 
 

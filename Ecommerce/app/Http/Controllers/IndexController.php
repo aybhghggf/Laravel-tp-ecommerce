@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Produit;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -13,6 +13,7 @@ class IndexController extends Controller
         return view('About');
     }
     public function ShowPerfumes(){
-        return view('Perfumes');
+        $produits= Produit::all();
+        return view('Perfumes' , compact('produits'));  
     }
 }
