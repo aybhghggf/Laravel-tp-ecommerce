@@ -7,7 +7,7 @@ use App\Http\Controllers\IndexController;
 Route::get('/Home',[IndexController::class,'ShowHome'])->name('Home.show');
 Route::get('/Fragrences',[IndexController::class,'ShowPerfumes'])->name('Perfumes.show');
 Route::get('/About',[IndexController::class,'ShowAbout'])->name('About');
-
+Route::get('Parfum/{id}',[IndexController::class,'ShowParfum'])->name('Parfum.show');
 
 Route::get('/SignIn',[ClientController::class, 'showSignIn'])->name('sign.show');
 Route::post('/StoreClient',[ClientController::class,'Store'])->name('Store.client');

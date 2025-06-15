@@ -1,4 +1,7 @@
 @extends('layouts.basic')
+@section('title')
+Catalogue
+@endsection
 @section('Perfumes')
 <div class="container mx-auto px-4 py-8">
         <!-- Page Header -->
@@ -106,12 +109,9 @@
                     </div>
 
                     <div class="flex space-x-2">
-                        <button class="gold-button flex-1 py-2 px-4 rounded-lg text-sm font-semibold">
-                            Add to Cart
-                        </button>
-                        <button class="border border-gray-600 text-gray-300 hover:bg-gray-800 transition-colors py-2 px-4 rounded-lg text-sm">
-                            ♡
-                        </button>
+                        <a href="{{ route('Parfum.show',$produit->id) }}" class="gold-button flex-1 py-2 px-4 rounded-lg text-sm font-semibold">
+                            View Details
+                        </a>
                     </div>
                 </div>
             </div>

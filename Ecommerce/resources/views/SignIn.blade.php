@@ -1,4 +1,7 @@
 @extends('layouts.basic')
+@section('title')
+Registre
+@endsection
 @section('Register')
 <body class="bg-gradient-custom min-h-screen">
 

@@ -16,4 +16,8 @@ class IndexController extends Controller
         $produits= Produit::all();
         return view('Perfumes' , compact('produits'));  
     }
+    public function ShowParfum($id){
+        $produit= Produit::find($id);
+        return view('Parfum' , compact('produit'));
+    }
 }

@@ -1,4 +1,7 @@
 @extends('layouts.basic')
+@section('title')
+Login
+@endsection
 @section('Login')
 <div class="flex items-center justify-center min-h-screen px-4 py-12">
         <div class="form-container max-w-md w-full rounded-2xl shadow-2xl p-8">

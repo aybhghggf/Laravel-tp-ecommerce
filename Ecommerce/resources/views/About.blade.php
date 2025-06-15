@@ -1,4 +1,7 @@
 @extends('layouts.basic')
+@section('title')
+About
+@endsection
 @section('About')
 <div>
     about

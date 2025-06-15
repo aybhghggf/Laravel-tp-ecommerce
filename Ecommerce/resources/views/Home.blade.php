@@ -1,4 +1,7 @@
 @extends('layouts.basic')
+@section('title')
+Home
+@endsection
 @section('Home')
 <section class="min-h-screen bg-white dark:bg-gray-900 relative overflow-hidden">
     <!-- Subtle pattern background -->
