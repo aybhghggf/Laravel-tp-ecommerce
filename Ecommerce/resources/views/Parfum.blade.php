@@ -125,7 +125,8 @@
                 <!-- Hidden Checkout Form -->
 <div id="checkout-form" style="display: none;" class="bg-white p-6 rounded-lg shadow-md mt-8">
     <h3 class="text-xl font-bold text-gray-800 mb-6">Complete Your Order</h3>
-    <form action="{{ route('') }}" method="POST">
+    <form action="{{ route('StoreCommande') }}" method="POST">
+        @csrf
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Full Name -->
         <div class="col-span-1">

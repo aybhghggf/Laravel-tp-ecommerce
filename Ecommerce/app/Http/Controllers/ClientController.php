@@ -38,4 +38,13 @@ class ClientController extends Controller
                 return to_route('login.show')->with('error','Invalid Informations');
             }
     }
+    public function StoreCommande(){
+       $auth= Auth::check();
+       if(! Auth::check()){
+        return to_route('login.show')->with('error','Please login first');
+       }else{
+            $user = Auth::user();
+            dd( $user);
+       }
+    }
 }
