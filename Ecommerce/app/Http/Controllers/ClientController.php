@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ClientRequest;
+use App\Http\Requests\CommandeRequestValidation;
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\Commande;
 use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
@@ -38,13 +40,23 @@ class ClientController extends Controller
                 return to_route('login.show')->with('error','Invalid Informations');
             }
     }
-    public function StoreCommande(){
+    public function StoreCommande( Request $request, CommandeRequestValidation $RequestValidation){
+        $validation= $RequestValidation->validated();
        $auth= Auth::check();
        if(! Auth::check()){
         return to_route('login.show')->with('error','Please login first');
        }else{
             $user = Auth::user();
-            dd( $user);
+            $commande= [
+                'user_id'=>$user->id,
+                'full_name'=> $request->full_name,
+                'email'=> $request->email,
+                'phone'=> $request->phone,
+                'adresse'=> $request->address,
+                'quantity'=> $request->quantity,
+            ];
+            Commande::create( $commande);
+            return to_route('Home.show')->with('success','Commande created successfully');
        }
     }
 }
