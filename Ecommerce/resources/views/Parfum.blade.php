@@ -122,7 +122,88 @@
                     </div>
                 </div>
             @endif
+                <!-- Hidden Checkout Form -->
+<div id="checkout-form" style="display: none;" class="bg-white p-6 rounded-lg shadow-md mt-8">
+    <h3 class="text-xl font-bold text-gray-800 mb-6">Complete Your Order</h3>
+    <form action="{{ route('') }}" method="POST">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Full Name -->
+        <div class="col-span-1">
+            <label for="full-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+            <input 
+                type="text" 
+                id="full-name" 
+                name="full_name" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                placeholder="John Doe"
+            >
+        </div>
+        
+        <!-- Email -->
+        <div class="col-span-1">
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                placeholder="your@email.com"
+            >
+        </div>
+        
+        <!-- Phone -->
+        <div class="col-span-1">
+            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+            <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                placeholder="+1 (555) 123-4567"
+            >
+        </div>
+        
+        <!-- Quantity -->
+        <div class="col-span-1">
+            <label for="quantity" class="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+            <input 
+                type="number" 
+                id="quantity" 
+                name="quantity" 
+                min="1" 
+                value="1" 
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+            >
+        </div>
+        
+        <!-- Address (Full width) -->
+        <div class="col-span-2">
+            <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Full Address</label>
+            <textarea 
+                id="address" 
+                name="address" 
+                rows="3" 
+                required 
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
+                placeholder="Street, City, Postal Code, Country"
+            ></textarea>
+        </div>
+    </div>
+        <div class="mt-6">
+        <button 
+            type="submit" 
+            class="w-full bg-amber-600 hover:bg-amber-700 text-white font-bold py-3 px-4 rounded-md transition duration-200"
+        >
+            Complete Purchase
+        </button>
+    </div>
+    </form>    
+    <!-- Submit Button -->
 
+</div>
             <!-- Product Features -->
             <div class="grid grid-cols-2 gap-4">
                 <div class="feature-icon rounded-xl p-4 text-center">
