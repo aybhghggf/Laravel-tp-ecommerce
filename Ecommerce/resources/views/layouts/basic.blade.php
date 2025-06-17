@@ -146,4 +146,6 @@
 </body>
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/confirmation.js') }}"></script>
+
+
 </html>

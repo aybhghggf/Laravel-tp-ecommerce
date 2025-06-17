@@ -16,3 +16,5 @@ Route::post('Auth',[ClientController::class,'AuthenficationUser'])->name('Auth')
 
 
 Route::post('/storeCommande', [ClientController::class, 'StoreCommande'])->name('StoreCommande');
+
+

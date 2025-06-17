@@ -8,7 +8,7 @@
         <div class="space-y-6">
             <div class="product-card rounded-3xl p-8 floating-animation">
                 <img 
-                    src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=600&h=600&fit=crop" 
+                    src="{{ asset($produit->path_image) }}" 
                     alt="Midnight Elegance Perfume" 
                     class="w-full h-96 lg:h-[500px] object-cover rounded-2xl image-zoom shadow-2xl"
                 >

@@ -22,7 +22,7 @@ Catalogue
                         Filter by Price
                     </h2>
                     
-                    <form class="space-y-6" action="" method="GET">
+                    <form class="space-y-6" action="{{ route('Perfumes.show') }}" method="GET">
                         <div>
                             <label for="min_price" class="block text-sm font-medium text-gray-300 mb-2">
                                 Minimum Price ($)
@@ -52,6 +52,7 @@ Catalogue
                         </div>
                         
                         <button 
+                        id="submitt"
                             type="submit" 
                             class="gold-button w-full py-3 px-6 rounded-lg text-lg font-semibold"
                         >
