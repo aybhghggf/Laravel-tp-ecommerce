@@ -12,13 +12,17 @@ return new class extends Migration
     public function up(): void
     {
          Schema::create('commandes', function (Blueprint $table) {
+            $table->unsignedBigInteger('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('clients');
             $table->string('full_name');
             $table->string('email');
             $table->string('phone');
             $table->string('adresse');
+            $table->string('produit');
             $table->integer('quantity');
+            $table->integer('confirmed');
+            $table->integer('total');
             $table->timestamps();
         });
     }

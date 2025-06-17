@@ -104,7 +104,7 @@
                 </button>
             @else
                 <!-- More prominent unavailable notice -->
-                <div class="bg-amber-50 border border-amber-200 rounded-lg p-6 text-center shadow-sm">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-6 text-center shadow-sm">
                     <div class="flex flex-col items-center">
                         <svg class="h-12 w-12 text-amber-500 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
@@ -112,12 +112,7 @@
                         <h3 class="text-lg font-medium text-amber-800 mb-2">Out of Stock</h3>
                         <p class="text-amber-700 mb-4 max-w-md">This product is currently unavailable. Expected restock date: <span class="font-semibold">{{ $produit->out_of_stock }}</span></p>
                         <div class="w-full max-w-xs">
-                            <div class="flex items-center">
-                                <input type="email" placeholder="Your email" class="flex-1 px-4 py-2 border border-amber-300 rounded-l-lg focus:ring-2 focus:ring-amber-500 focus:border-amber-500">
-                                <button class="bg-amber-600 hover:bg-amber-700 text-white px-4 py-2 rounded-r-lg transition duration-200">
-                                    Notify Me
-                                </button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -152,7 +147,7 @@
                     name="full_name" 
                     required 
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-                    placeholder="John Doe"
+                    placeholder="{{ $user->nom ?? 'Nom' }}"
                 >
             </div>
             
@@ -165,7 +160,7 @@
                     name="email" 
                     required 
                     class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-amber-500 focus:border-amber-500"
-                    placeholder="your@email.com"
+                    placeholder="{{ $user->email ?? 'your@email.com' }}"
                 >
             </div>
             
@@ -207,6 +202,9 @@
                     placeholder="Street, City, Postal Code, Country"
                 ></textarea>
             </div>
+            <input type="hidden" name="produit" value="{{ $produit->nom_de_parfum }}">
+            <input type="hidden" name="prix" value="{{ $produit->prix }}">
+
         </div>
         <div class="mt-6">
             <button 

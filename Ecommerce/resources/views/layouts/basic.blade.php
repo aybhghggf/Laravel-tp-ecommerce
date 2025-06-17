@@ -23,7 +23,7 @@
             <span class="font-medium">{{ session('error') }}</span>
         </div>
     @endif
-<body class="bg-gray-50">
+
     <!-- Navigation Bar -->
     <nav class="bg-white shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,80 +57,102 @@
                     </div>
                 </div>
 
-                <!-- Desktop Auth Buttons -->
-                @auth
-                    <div class="hidden md:block ml-10 space-x-4">
-                        <a href="" class="text-gray-600 hover:text-gray-800 px-4 py-2 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
-                            Logout
-                        </a>
-                    </div>
-                @else
-                    <div class="hidden md:block ml-10 space-x-4">
-                        <a href="{{ route('login.show') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
-                            Login
-                        </a>
-                        <a href="{{ route('sign.show') }}" class="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md">
-                            Register
-                        </a>
-                    </div>
-                @endauth
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-amber-600 focus:outline-none focus:text-amber-600">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
-                </div>
-            </div>
+               @auth
+<!-- Dropdown Container -->
+<div class="hidden md:block relative group">
+    <!-- Dropdown Button -->
+    <button type="button" class="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-amber-500">
+        Account
+        <!-- Chevron Icon -->
+        <svg class="w-5 h-5 ml-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+    </button>
+    <!-- Dropdown Menu -->
+    <div class="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200">
+        <div class="py-1">
+            <a href="{{ route('Commandes.show') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                My Orders
+            </a>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="block w-full px-4 py-2 text-sm text-left text-gray-700 hover:bg-gray-100 hover:text-gray-900">
+                    Logout
+                </button>
+            </form>
         </div>
+    </div>
+</div>
+@else
+<div class="hidden md:block ml-10 space-x-4">
+    <a href="{{ route('login.show') }}" class="text-gray-600 hover:text-gray-800 px-4 py-2 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
+        Login
+    </a>
+    <a href="{{ route('sign.show') }}" class="bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md">
+        Register
+    </a>
+</div>
+@endauth
 
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white shadow-2xl md:hidden z-50">
-            <div class="p-6">
-                <!-- Close button -->
-                <div class="flex justify-end mb-8">
-                    <button id="close-menu-btn" class="text-gray-700 hover:text-amber-600">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                
-                <!-- Mobile Navigation Links -->
-                <div class="space-y-6">
-                    <a href="{{ route('Home.show') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
-                        Home
-                    </a>
-                    <a href="{{ route('Perfumes.show') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
-                        Perfumes
-                    </a>
-                    <a href="{{ route('About') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
-                        About
-                    </a>
-                </div>
+<!-- Mobile menu button -->
+<div class="md:hidden">
+    <button id="mobile-menu-btn" class="text-gray-700 hover:text-amber-600 focus:outline-none focus:text-amber-600">
+        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+    </button>
+</div>
 
-                <!-- Mobile Auth Buttons -->
-                @auth
-                    <div class="mt-8 space-y-4">
-                        <a href="" class="w-full text-gray-600 hover:text-gray-800 px-4 py-3 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
-                            Logout
-                        </a>
-                    </div>
-                @else
-                    <div class="mt-8 space-y-4">
-                        <a href="{{ route('login.show') }}" class="w-full text-gray-600 hover:text-gray-800 px-4 py-3 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
-                            Login
-                        </a>
-                        <a href="{{ route('sign.show') }}" class="w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-3 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md">
-                            Register
-                        </a>
-                    </div>
-                @endauth
-            </div>
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="mobile-menu fixed top-0 right-0 h-full w-80 bg-white shadow-2xl md:hidden z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+    <div class="p-6">
+        <!-- Close button -->
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="text-gray-700 hover:text-amber-600">
+                <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </button>
         </div>
-
+        <!-- Mobile Navigation Links -->
+        <div class="space-y-6">
+            <a href="{{ route('Home.show') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
+                Home
+            </a>
+            <a href="{{ route('Perfumes.show') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
+                Perfumes
+            </a>
+            <a href="{{ route('About') }}" class="block text-gray-800 hover:text-amber-600 text-lg font-inter font-medium py-2 border-b border-gray-100">
+                About
+            </a>
+            
+            <!-- Mobile Auth Links -->
+            @auth
+            <div class="pt-4 space-y-2">
+                <a href="{{ route('Commandes.show') }}" class="block w-full text-gray-600 hover:text-gray-800 px-4 py-3 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
+                    My Orders
+                </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full text-left text-gray-600 hover:text-white hover:bg-amber-600 px-4 py-3 text-sm font-inter font-medium border border-gray-300 rounded-lg transition-colors duration-200">
+                        Logout
+                    </button>
+                </form>
+            </div>
+            @else
+            <div class="pt-4 space-y-4">
+                <a href="{{ route('login.show') }}" class="block w-full text-gray-600 hover:text-gray-800 px-4 py-3 text-sm font-inter font-medium border border-gray-300 rounded-lg hover:bg-gray-50">
+                    Login
+                </a>
+                <a href="{{ route('sign.show') }}" class="block w-full bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-3 text-sm font-inter font-medium rounded-lg hover:from-amber-600 hover:to-amber-700 shadow-md">
+                    Register
+                </a>
+            </div>
+            @endauth
+        </div>
+    </div>
+</div>
+        </div>
         <!-- Mobile Menu Overlay -->
         <div id="menu-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden md:hidden z-40"></div>
     </nav>
@@ -141,11 +163,10 @@
         @yield('Register')
         @yield('Login')
         @yield('Parfum')
+        @yield('commandes')
     </main>
-<x-footer />
-</body>
+    <x-footer />
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="{{ asset('js/confirmation.js') }}"></script>
-
-
+</body>
 </html>

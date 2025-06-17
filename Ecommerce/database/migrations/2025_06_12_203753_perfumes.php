@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('path_image');
             $table->decimal('prix', 8, 2);    // Better for prices than string
             $table->text('description');      // Better for long text than string
-            $table->boolean('disponible');    // Better for yes/no than integer
+            $table->boolean('disponible');   
+            $table->date('out_of_stock') ;
             $table->timestamps();             // Remove parameter - creates created_at/updated_at
         });
     }

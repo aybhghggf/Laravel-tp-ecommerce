@@ -47,16 +47,27 @@ class ClientController extends Controller
         return to_route('login.show')->with('error','Please login first');
        }else{
             $user = Auth::user();
+            $prix = $request->prix;
+            $quantity = $request->quantity;
+            $total = $prix * $quantity;
             $commande= [
                 'user_id'=>$user->id,
                 'full_name'=> $request->full_name,
                 'email'=> $request->email,
                 'phone'=> $request->phone,
                 'adresse'=> $request->address,
+                'Produit'=> $request->produit ,
                 'quantity'=> $request->quantity,
+                'total' => $total,
+                'confirmed'=> 0,
+                
             ];
             Commande::create( $commande);
             return to_route('Home.show')->with('success','Commande created successfully');
        }
+    }
+    public function Logout( Request $request){
+        Auth::logout();
+        return to_route('Home.show')->with('success','Logout successfully');
     }
 }

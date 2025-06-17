@@ -2,8 +2,7 @@
 @section('title')
 About
 @endsection
-@extends('layouts.basic')
-@section('title') About Our Fragrance House @endsection
+
 @section('About')
 <div class="bg-amber-50 min-h-screen">
     <!-- Hero Section -->
