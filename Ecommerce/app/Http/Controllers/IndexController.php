@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comments;
 use App\Models\Produit;
 use App\Models\Commande;
 use Illuminate\Http\Request;
@@ -21,7 +22,6 @@ class IndexController extends Controller
     {
         $user = Auth::user();
         $produits = Produit::query();
-
         if ($request->filled('min_price')) {
             $produits = $produits->where('prix', '>=', $request->min_price);
         }
@@ -33,13 +33,15 @@ class IndexController extends Controller
         $produits = $produits->get();
 
 
-        return view('Perfumes', compact('produits' , 'user'));
+        return view('Perfumes', compact('produits', 'user'));
     }
 
     public function ShowParfum($id)
     {
+        $comments = Comments::all();
+
         $produit = Produit::find($id);
-        return view('Parfum', compact('produit'));
+        return view('Parfum', compact('produit' , 'comments'));
     }
     public function ShowCommandes()
     {

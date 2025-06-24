@@ -257,4 +257,6 @@
         </div>
     </div>
 </div>
+
+<x-comments :produit="$produit" :comments="$comments" />
 @endsection

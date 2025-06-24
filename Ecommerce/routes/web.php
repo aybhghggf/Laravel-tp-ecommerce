@@ -18,5 +18,6 @@ Route::post('/Logout',[ClientController::class,'Logout'])->name('logout');
 
 
 Route::post('/storeCommande', [ClientController::class, 'StoreCommande'])->name('StoreCommande');
+Route::post('/storeComment',[ClientController::class,'StoreComment'])->name('StoreComment');
 
 
